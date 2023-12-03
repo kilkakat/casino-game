@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas with Mouse Coordinates</title>
+  <style>
+    /* Add some styles for the canvas */
+    canvas {
+      border: 1px solid #000;
+      display: block; /* Remove default inline alignment */
+      margin: 20px auto; /* Center the canvas */
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas element -->
+  <canvas id="myCanvas" width="400" height="300"></canvas>
+
+  <!-- JavaScript code to handle mouse coordinates -->
+  <script>
+    // Get the canvas element
+    var canvas = document.getElementById('myCanvas');
+
+    // Get the 2D rendering context
+    var ctx = canvas.getContext('2d');
+
+    // Function to get mouse coordinates
+    function getMousePos(canvas, event) {
+      var rect = canvas.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+      };
+    }
+
+    // Event listener for mousemove
+    canvas.addEventListener('mousemove', function(event) {
+      // Get mouse coordinates
+      var mousePos = getMousePos(canvas, event);
+
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Display mouse coordinates on the canvas
+      ctx.font = '16px Arial';
+      ctx.fillStyle = 'black';
+      ctx.fillText(`Mouse Coordinates: (${mousePos.x}, ${mousePos.y})`, 10, 20);
+    });
+  </script>
+</body>
+</html>
