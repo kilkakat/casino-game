@@ -42,6 +42,7 @@ canvas.addEventListener('mousemove', function(event) {
   // Рисуем круг на canvas в соответствии с координатами курсора
   ctx.beginPath();
   ctx.arc(mousePos.x, mousePos.y, 10, 0, 2 * Math.PI);
+  ctx.arc(mousePos.x, mousePos.y, 10, 0, 2 * Math.PI);
   ctx.fillStyle = 'red';
   ctx.fill();
   ctx.stroke();
